@@ -1,37 +1,54 @@
-// Import React at the top of your file if not already done
-import React from 'react';
+"use client";
+import React, { useState } from "react";
+import { FaSearch, FaShoppingCart, FaBars } from "react-icons/fa";
 
 export default function Navbar() {
-    return (
-        <nav className="flex justify-end items-center bg-gray-100 p-4 text-black">
-            {/* List items */}
-            <ul className="flex space-x-4">
-                <li className="hover:text-gray-300">Home</li>
-                <li className="hover:text-gray-300">About</li>
-                <li className="hover:text-gray-300">Products</li>
-                <li className="hover:text-gray-300">Cart</li>
-                <li className="hover:text-gray-300">Signup</li>
-                <li className="hover:text-gray-300">Login</li>
-            </ul>
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-            {/* Search Icon */}
-            <div className="flex items-center ml-4">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    className="w-6 h-6 text-gray-500 cursor-pointer hover:text-gray-700"
-                >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M21 21l-5.2-5.2"
-                    ></path>
-                    <circle cx="10" cy="10" r="8" />
-                </svg>
-            </div>
-        </nav>
-    );
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+
+  return (
+    <nav className="flex items-center justify-between ml-4  p-4 ">
+      <img
+        src="https://res.cloudinary.com/ilove2support/image/upload/v1699863114/pizza-logo_afsvzn.png"
+        alt="Logo"
+        className="w-24 h-auto "
+      />
+
+      <div className=" mt-[-4]">
+        <img src="../../images/pizza-header.png" className="w-48 h-auto" />
+      </div>
+      <div className={`lg:hidden ${isMenuOpen ? 'hidden' : 'block'}`}>
+        <FaBars className="text-black cursor-pointer" onClick={toggleMenu} />
+      </div>
+      <div
+        className={`lg:flex ml-8 space-x-8 ${isMenuOpen ? "block" : "hidden"}`}
+      >
+        <ul className=" lg:flex ml-8 space-x-8">
+          <li className="hover:text-gray-300 text-black">HOME</li>
+          <li className="hover:text-gray-300 text-black">PRODUCTS</li>
+          <li className="hover:text-gray-300 text-black">PAGES</li>
+          <li className="hover:text-gray-300 text-black">BLOG</li>
+          <li className="hover:text-gray-300 text-black">CONTACT</li>
+        </ul>
+        <div className="flex space-x-4 ml-8">
+          <FaSearch
+            size={20}
+            className="text-black hover:text-gray-300 cursor-pointer"
+          />
+          {/* Cart icon with tooltip */}
+          <div data-tip="3">
+            <FaShoppingCart
+              size={20}
+              className="text-blue-800 hover:text-gray-300 cursor-pointer"
+            />
+          </div>
+          {/* React-tooltip */}
+        </div>
+      </div>
+    </nav>
+  );
 }
