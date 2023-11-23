@@ -27,12 +27,12 @@ export default function Navbar() {
       <div
         className={`lg:flex ml-8 space-x-8 ${isMenuOpen ? "block" : "hidden"}`}
       >
-        <ul className=" lg:flex ml-8 space-x-8">
-          <li className="hover:text-gray-300 text-black">HOME</li>
-          <li className="hover:text-gray-300 text-black">PRODUCTS</li>
-          <li className="hover:text-gray-300 text-black">PAGES</li>
-          <li className="hover:text-gray-300 text-black">BLOG</li>
-          <li className="hover:text-gray-300 text-black">CONTACT</li>
+        <ul className=" lg:flex ml-8 space-x-8 font-bold text-black">
+          <li className="hover:text-gray-300 ">HOME</li>
+          <li className="hover:text-gray-300 ">PRODUCTS</li>
+          <li className="hover:text-gray-300">PAGES</li>
+          <li className="hover:text-gray-300 ">BLOG</li>
+          <li className="hover:text-gray-300 ">CONTACT</li>
         </ul>
         <div className="flex space-x-4 ml-8">
           <FaSearch
