@@ -5,16 +5,18 @@ import Footer from "@/components/footer";
 import Hero from "@/components/hero";
 import Feature from "@/components/feature";
 import WhoWeAre from "@/components/whoWeAre";
+import Feedback from "@/components/feedback";
 
 export default function Home() {
   return (
-    <main className="flex mx-auto flex-col min-h-screen mb-12 ">
+    <main className="flex flex-col min-h-screen">
       <div className="flex-grow">
         <Navbar />
         <Hero />
         <Feature />
         <Products />
         <WhoWeAre />
+        <Feedback />
       </div>
 
       <Footer />
