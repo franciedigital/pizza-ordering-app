@@ -1,6 +1,6 @@
 // Import React at the top of your file if not already done
 import React from "react";
-import { FaShoppingCart } from "react-icons/fa";
+import OrderButton from "./common/order-button";
 
 const Hero = () => {
   return (
@@ -15,10 +15,7 @@ const Hero = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
           facilisis risus at turpis bibendum, in hendrerit erat tristique.
         </p>
-        <button className="flex items-center bg-yellow-500 text-white p-4 rounded-full w-max">
-          <FaShoppingCart size={20} className="mr-2" />
-          <span>ORDER NOW</span>
-        </button>
+        <OrderButton />
       </div>
 
       {/* Right column with semi-circle */}
