@@ -26,7 +26,7 @@ const Hero = () => {
         <img
           src="../../images/pizza-hero.png"
           alt="Hero Image"
-          className="absolute top-[-140px] right-0 left-16 object-cover relative w-[60%]  z-20"
+          className="absolute top-[-60px] right-0 left-16 object-cover relative w-[60%]  z-20"
         />
         <img src="../../images/pizza-onion.png"  alt="Onion Image" className="absolute left-0 bottom-16 z-20" />
         <img src="../../images/pizza-small.png"  alt="Small pizza Image" className="absolute right-32 bottom-0 z-20 w-[30%]" />
