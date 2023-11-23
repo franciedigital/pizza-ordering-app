@@ -3,7 +3,7 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 import OrderButton from "./common/order-button";
 
-const ProductGrid = () => {
+const Products = () => {
   // Dummy product data (replace with your actual data)
   const products = [
     {
@@ -42,7 +42,7 @@ const ProductGrid = () => {
   ];
 
   return (
-    <section className="container mx-auto mb-12">
+    <section className="p-8 mb-12">
       <div className="p-4 mb-4">
         <h2 className="text-red-500 font-bold text-xl tracking-tight mb-2">
           Popular Dishes
@@ -89,4 +89,4 @@ const ProductGrid = () => {
   );
 };
 
-export default ProductGrid;
+export default Products;
