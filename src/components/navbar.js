@@ -11,7 +11,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="flex items-center justify-between ml-4  p-4 fixed top-0 left-0 right-0 z-50  ">
+    <nav className="flex items-center bg-white justify-between ml-4  p-4 fixed top-0 left-0 right-0 z-50  ">
       <img
         src="https://res.cloudinary.com/ilove2support/image/upload/v1699863114/pizza-logo_afsvzn.png"
         alt="Logo"
