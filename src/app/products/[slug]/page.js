@@ -75,17 +75,17 @@ const Product = ({ params }) => {
           <div className="flex items-center space-x-6">
             {/* Input Box */}
             <input
-              type="text"
+              type="number"
               placeholder=""
               defaultValue="1"
               className="border border-gray-500 p-2 focus:outline-none focus:border-black"
             />
             {/* Button with Shopping Cart Icon */}
-            <button className="bg-yellow-500 text-white px-4 py-2 rounded-full">
+            <button className="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-red-500">
               ADD TO CART
             </button>
             {/* Like Icon with Heart Icon */}
-            <div className="bg-gray-500 text-white p-2 rounded-full flex items-center">
+            <div className="bg-red-500 text-white p-2 rounded-full flex items-center">
               <FaHeart />
             </div>
           </div>

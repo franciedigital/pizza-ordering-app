@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { FaSearch, FaShoppingCart, FaBars } from "react-icons/fa";
+import CartWithTooTip from "./common/cart-tooltip";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,14 +44,7 @@ export default function Navbar() {
             size={20}
             className="text-black hover:text-gray-300 cursor-pointer"
           />
-          {/* Cart icon with tooltip */}
-          <div data-tip="3">
-            <FaShoppingCart
-              size={20}
-              className="text-blue-800 hover:text-gray-300 cursor-pointer"
-            />
-          </div>
-          {/* React-tooltip */}
+         <CartWithTooTip />
         </div>
       </div>
     </nav>
