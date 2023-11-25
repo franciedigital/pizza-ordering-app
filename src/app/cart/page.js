@@ -75,7 +75,7 @@ const Cart = () => {
 
   const CheckoutCard = () => {
     return (
-      <div className="w-[80%] h-[40vh] col-span-1  p-4 bg-gray-700 text-white  ">
+      <div className="w-[80%] h-[50vh] col-span-1  p-4 bg-gray-700 text-white  ">
         <div className="flex flex-col p-8 space-y-4 ">
           <h1 className="text-4xl font-bold mb-4">CARD TOTAL</h1>
           <div className="mb-4">
