@@ -47,7 +47,7 @@ const Product = ({ params }) => {
 
   const updateCart = () => {
     addToCart({
-      id: product.id,
+      product: product,
       name: product.name,
       size: size,
       quantity: quantity,
