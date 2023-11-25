@@ -75,7 +75,7 @@ const Cart = () => {
 
   const CheckoutCard = () => {
     return (
-      <div className="w-[80%]   col-span-1 h-[60vh] p-4 bg-gray-700 text-white m-auto my-0 ">
+      <div className="w-[80%] h-[40vh] col-span-1  p-4 bg-gray-700 text-white  ">
         <div className="flex flex-col p-8 space-y-4 ">
           <h1 className="text-4xl font-bold mb-4">CARD TOTAL</h1>
           <div className="mb-4">
@@ -123,7 +123,7 @@ const Cart = () => {
     <>
       <Navbar />
       <section className="mt-40">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div className="grid grid-cols-1 md:grid-cols-3  p-4">
           {/* Table section */}
           <TableSection />
           {/* Cart total card section */}
