@@ -10,6 +10,7 @@ const { default: Navbar } = require("@/components/navbar");
 const Cart = () => {
   const { cartItems } = useCart();
   const [totalPrice, setTotalPrice] = useState(0);
+  const [isCheckout, setIsCheckout] = useState(false);
 
   // Function to calculate the total price for each item
   const calculateTotal = (item) => {
@@ -82,11 +83,35 @@ const Cart = () => {
             <p>Discount: ${totalPrice * 0.1}</p>
             <p>Total: ${totalPrice - totalPrice * 0.1}</p>
           </div>
-          <div>
+          <div className="space-y-4">
             <button
-              className={`bg-yellow-500 p-4 w-full rounded-full text-2xl font-bold`}
+              className={`bg-yellow-500 p-4 w-full rounded-full text-2xl font-bold ${
+                isCheckout ? "hidden" : "block"
+              }`}
+              onClick={() =>
+                setIsCheckout((prevChecked) => (prevChecked = !prevChecked))
+              }
             >
               CHECKOUT NOW!
+            </button>
+            <button
+              className={`bg-white text-green-500 p-4 w-full text-xl font-bold tracking-tight ${
+                isCheckout ? "block" : "hidden"
+              } `}
+            >
+              CASH ON DELIVERY
+            </button>
+            <button
+              className={`bg-yellow-500 p-4 w-full  text-2xl font-bold tracking-wide ${
+                isCheckout ? "block" : "hidden"
+              }`}
+            >
+              <span className="text-blue-800">
+                <i>Pay</i>
+              </span>
+              <span className="text-blue-500">
+                <i>Pal</i>
+              </span>
             </button>
           </div>
         </div>
