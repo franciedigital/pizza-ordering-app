@@ -32,7 +32,7 @@ const ProductsGrid = () => {
 
               <div>
                 <p className=" text-red-500 text-2xl font-semibold mb-2">
-                  {product.price}
+                  ${product.price}
                 </p>
               </div>
             </div>

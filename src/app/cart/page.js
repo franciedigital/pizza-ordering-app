@@ -2,17 +2,28 @@
 "use client";
 import { useCart } from "@/components/context/CartContext";
 import Footer from "@/components/footer";
+import { useEffect, useState } from "react";
 //import { formatCurrency } from "@/utils/formatCurrency"; // Import a utility function to format currency
 
 const { default: Navbar } = require("@/components/navbar");
 
 const Cart = () => {
   const { cartItems } = useCart();
+  const [totalPrice, setTotalPrice] = useState(0);
 
   // Function to calculate the total price for each item
   const calculateTotal = (item) => {
-    return item.price * item.quantity;
+    return parseFloat(item.product.price) * item.quantity;
   };
+
+  useEffect(() => {
+    // Calculate the total price when cartItems change
+    const newTotalPrice = cartItems.reduce(
+      (acc, item) => acc + calculateTotal(item),
+      0
+    );
+    setTotalPrice(newTotalPrice);
+  }, [cartItems]);
 
   const TableSection = () => {
     return (
@@ -50,7 +61,7 @@ const Cart = () => {
                 <td className="border p-2">{item.quantity}</td>
                 {/* Total */}
                 <td className="border p-2">
-                  {calculateTotal(item)}
+                  ${calculateTotal(item)}
                   {/* {formatCurrency(calculateTotal(item))} */}
                 </td>
               </tr>
@@ -65,16 +76,19 @@ const Cart = () => {
     return (
       <div className="w-[80%]   col-span-1 h-[60vh] p-4 bg-gray-700 text-white m-auto my-0 ">
         <div className="flex flex-col p-8 space-y-4 ">
-            <h1 className="text-4xl font-bold mb-4">CARD TOTAL</h1>
-            <div className="mb-4">
-                <p>Subtotal: $160</p>
-                <p>Discount: $79.60</p>
-                <p>Total: $160</p>
-            </div>
-            <div>
-                <button className={`bg-yellow-500 p-4 w-full rounded-full text-2xl font-bold`} >CHECKOUT NOW!</button>
-            </div>
-
+          <h1 className="text-4xl font-bold mb-4">CARD TOTAL</h1>
+          <div className="mb-4">
+            <p>Subtotal: ${totalPrice}</p>
+            <p>Discount: ${totalPrice * 0.1}</p>
+            <p>Total: ${totalPrice - totalPrice * 0.1}</p>
+          </div>
+          <div>
+            <button
+              className={`bg-yellow-500 p-4 w-full rounded-full text-2xl font-bold`}
+            >
+              CHECKOUT NOW!
+            </button>
+          </div>
         </div>
       </div>
     );
