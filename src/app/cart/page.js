@@ -11,6 +11,7 @@ const Cart = () => {
   const { cartItems } = useCart();
   const [totalPrice, setTotalPrice] = useState(0);
   const [isCheckout, setIsCheckout] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   // Function to calculate the total price for each item
   const calculateTotal = (item) => {
@@ -25,6 +26,8 @@ const Cart = () => {
     );
     setTotalPrice(newTotalPrice);
   }, [cartItems]);
+
+  
 
   const TableSection = () => {
     return (
@@ -98,6 +101,9 @@ const Cart = () => {
               className={`bg-white text-green-500 p-4 w-full text-xl font-bold tracking-tight ${
                 isCheckout ? "block" : "hidden"
               } `}
+              onClick={() =>
+                setShowModal((prevModal) => (prevModal = !prevModal))
+              }
             >
               CASH ON DELIVERY
             </button>
@@ -119,6 +125,86 @@ const Cart = () => {
     );
   };
 
+  const CashOnDeliveryModal = () => {
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      const name = e.target.elements.name.value;
+      const phoneNumber = e.target.elements.phoneNumber.value;
+      const address = e.target.elements.address.value;
+      // Process the data as needed
+      console.log("Form submitted with:", { name, phoneNumber, address });
+      // Close the modal and redirect to order success page
+      setShowModal(false);
+    };
+
+    
+
+
+    return (
+      <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-sm mt-16">
+        
+        <div className="bg-white p-8 rounded-lg shadow-md">
+          <h2 className="text-2xl font-bold mb-4">
+            You will pay $12 on delivery
+          </h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-600"
+              >
+                Name:
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                className="mt-1 p-2 w-full border rounded-md"
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="phoneNumber"
+                className="block text-sm font-medium text-gray-600"
+              >
+                Phone Number:
+              </label>
+              <input
+                type="tel"
+                id="phoneNumber"
+                name="phoneNumber"
+                required
+                className="mt-1 p-2 w-full border rounded-md"
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="address"
+                className="block text-sm font-medium text-gray-600"
+              >
+                Address:
+              </label>
+              <textarea
+                id="address"
+                name="address"
+                rows="3"
+                required
+                className="mt-1 p-2 w-full border rounded-md"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              className="bg-yellow-500 text-white px-4 py-2 rounded-full mt-4 block mx-auto"
+            >
+              Place Order
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <>
       <Navbar />
@@ -129,6 +215,8 @@ const Cart = () => {
           {/* Cart total card section */}
           <CheckoutCard />
         </div>
+
+        {showModal ? <CashOnDeliveryModal /> : null}
       </section>
       <Footer />
     </>
