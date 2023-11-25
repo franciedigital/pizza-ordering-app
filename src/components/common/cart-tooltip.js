@@ -1,23 +1,16 @@
-import { FaShoppingCart } from "react-icons/fa";
+import { BsCart2 } from "react-icons/bs";
+import { useCart } from "../context/CartContext";
 
 const CartWithTooTip = () => {
-  const numberOfItemsInCart = 0; // Replace with the actual number of items in the cart
+  const { cartItems } = useCart();
 
   return (
-    <div className="relative">
-      {/* Cart icon */}
-      <div data-tip={numberOfItemsInCart}>
-        <FaShoppingCart
-          size={20}
-          className="text-blue-800 hover:text-blue-800 cursor-pointer"
-        />
+    <>
+      <BsCart2 className="text-blue-500 text-[25px]" />
+      <div className="h-4 w-4 text-[10px] rounded-full bg-red-500 text-white flex left-3 absolute top-[-4px] justify-center items-center">
+        {cartItems.length}
       </div>
-
-      {/* Permanent Tooltip */}
-      <div className="absolute  bg-red-500 text-white py-0 px-1 rounded-full top-0 right-0 transform translate-x-1/2 -translate-y-full">
-        {numberOfItemsInCart}
-      </div>
-    </div>
+    </>
   );
 };
 

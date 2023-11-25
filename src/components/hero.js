@@ -1,6 +1,7 @@
 // Import React at the top of your file if not already done
 import React from "react";
 import OrderButton from "./common/order-button";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -16,7 +17,10 @@ const Hero = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
             facilisis risus at turpis bibendum, in hendrerit erat tristique.
           </p>
-          <OrderButton />
+          <Link href={"/products"}>
+            {" "}
+            <OrderButton />
+          </Link>
         </div>
 
         {/* Right column with semi-circle */}
