@@ -2,22 +2,22 @@ import React from "react";
 
 const Feature = () => {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-3 gap-4 p-8">
-      <div className="flex flex-col justify-center">
+    <section className="p-4 grid grid-cols-1 md:grid-cols-3 gap-4 md:p-8">
+      <div className="flex flex-col justify-center items-center md:items-start">
         <img
           src="../../images/feature-1.png"
           alt="feature"
-          className="w-[60%]"
+          className="w-full md:w-[60%]"
         />
       </div>
       <div className="flex flex-col justify-center">
-        <div className="p-4">
-          <h1 className="text-black font-bold text-5xl mb-4 tracking-wide">
+        <div className="p-4 text-center md:text-left">
+          <h1 className="text-black font-bold text-3xl md:text-5xl mb-4 tracking-wide">
             Daily fresh and always tasty
           </h1>
-          <p className="text-gray-500 text-xl tracking-tight">
+          <p className="text-gray-500 text-base md:text-xl tracking-tight">
             There are many variations of passages of Lorem Ipsum available, but
-            majprity haved{" "}
+            majority have suffered alteration in some form.
           </p>
         </div>
       </div>
