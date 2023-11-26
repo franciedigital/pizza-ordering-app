@@ -205,7 +205,7 @@ const Cart = () => {
     <>
       <Navbar />
       <section className="mt-40 p-4">
-        <div className="grid grid-cols-1 md:grid-cols-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0">
           {/* Table section */}
           <TableSection />
           {/* Cart total card section */}
