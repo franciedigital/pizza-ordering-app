@@ -92,7 +92,7 @@ const Cart = () => {
           </div>
           <div className="space-y-2 md:space-y-4">
             <button
-              className={`bg-yellow-500 p-2 md:p-4 w-full md:w-[80%] rounded-full text-base md:text-2xl font-bold ${
+              className={`bg-yellow-500 p-2 md:p-4 w-full md:w-[80%] rounded-md text-sm md:text-base  font-bold ${
                 isCheckout ? "hidden" : "block"
               }`}
               onClick={() => setIsCheckout((prevChecked) => !prevChecked)}
