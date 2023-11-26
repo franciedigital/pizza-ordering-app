@@ -4,6 +4,30 @@ import OrderButton from "./common/order-button";
 import Link from "next/link";
 
 const Hero = () => {
+  const HeroImage = () => {
+    return (
+      <div className="p-8 relative overflow-hidden">
+        <div className=" rounded-full bg-yellow-500  "></div>
+        <div className=" md:max-w-xl relative z-20">
+          <img
+            src="../../images/pizza-hero.png"
+            alt="Hero Image"
+            className="absolute  w-[75%] top-[-40px] mb-4  right-0 left-8 mt-24  relative  z-20"
+          />
+          <img
+            src="../../images/pizza-onion.png"
+            alt="Onion Image"
+            className="absolute left-0 bottom-0 w-[20%] z-20"
+          />
+          <img
+            src="../../images/pizza-small.png"
+            alt="Small pizza Image"
+            className="absolute right-0 bottom-0 z-20 w-[20%] md:w-[30%]"
+          />
+        </div>
+      </div>
+    );
+  };
   return (
     <div className="mt-24 p-4 items-center">
       <div className="relative grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
@@ -24,24 +48,7 @@ const Hero = () => {
         </div>
 
         {/* Right column with semi-circle */}
-        <div className="relative overflow-hidden">
-          <img
-            src="../../images/pizza-hero.png"
-            alt="Hero Image"
-            className="absolute top-[-60px] right-0 left-16 object-cover relative w-full md:w-[60%] z-20"
-          />
-          <img
-            src="../../images/pizza-onion.png"
-            alt="Onion Image"
-            className="absolute left-0 bottom-16 z-20"
-          />
-          <img
-            src="../../images/pizza-small.png"
-            alt="Small pizza Image"
-            className="absolute right-8 bottom-0 z-20 w-[30%] md:w-[30%]"
-          />
-          <div className="absolute w-full h-full rounded-bl-full bg-yellow-500 top-[-30px] right-[-30px] left-[50%] "></div>
-        </div>
+        <HeroImage />
       </div>
     </div>
   );
