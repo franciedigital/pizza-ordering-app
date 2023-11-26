@@ -7,22 +7,23 @@ const Hero = () => {
   const HeroImage = () => {
     return (
       <div className="p-8 relative overflow-hidden">
-        <div className=" rounded-full bg-yellow-500  "></div>
+        <div className="bg-yellow-500 rounded-l-full absolute top-0 right-[-60%] md:right-[-70%] h-full w-full aspect-w-1 aspect-h-1 z-10"></div>
+
         <div className=" md:max-w-xl relative z-20">
           <img
             src="../../images/pizza-hero.png"
             alt="Hero Image"
-            className="absolute  w-[75%] top-[-40px] mb-4  right-0 left-8 mt-24  relative  z-20"
+            className="absolute  w-[75%] top-[-40px] md:mb-12 mb-12  md:left-60  md:right-[-70%] left-8 mt-24  relative  z-20"
           />
           <img
             src="../../images/pizza-onion.png"
             alt="Onion Image"
-            className="absolute left-0 bottom-0 w-[20%] z-20"
+            className="absolute left-0 bottom-[-10%] w-[20%] z-20"
           />
           <img
             src="../../images/pizza-small.png"
             alt="Small pizza Image"
-            className="absolute right-0 bottom-0 z-20 w-[20%] md:w-[30%]"
+            className="absolute right-10 md:right-[-30%] bottom-[-20%] z-20 w-[30%] md:w-[30%]"
           />
         </div>
       </div>
