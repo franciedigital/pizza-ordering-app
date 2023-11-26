@@ -5,18 +5,20 @@ import Footer from "../footer";
 
 const FilterSection = () => {
   return (
-    <section className="mt-60 p-4">
-      <div className="flex justify-between p-4">
-        <div>
+    <section className="mt-8 md:mt-16 p-4">
+      <div className="flex flex-col md:flex-row justify-between p-4">
+        <div className="mb-4 md:mb-0">
           <button className="flex items-center bg-yellow-500 text-white p-2 rounded-full w-40">
             <IoFilterSharp size={20} className="mr-2 ml-2" />
             <span className="text-xl tracking-wide">Filter</span>
           </button>
         </div>
-        <div className="flex justify-between items-center">
-          <h3 className="mr-8 text-xl font-bold tracking-wide">Showing all 9 results</h3>
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <h3 className="mb-4 md:mb-0 md:mr-8 text-xl font-bold tracking-wide">
+            Showing all 9 results
+          </h3>
           {/* Form input with drop-down icon */}
-          <div className="relative">
+          <div className="relative mb-4 md:mb-0">
             <input
               type="text"
               placeholder="Default Sorting"

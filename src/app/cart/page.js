@@ -27,11 +27,9 @@ const Cart = () => {
     setTotalPrice(newTotalPrice);
   }, [cartItems]);
 
-  
-
   const TableSection = () => {
     return (
-      <div className="w-full md:col-span-2 relative lg:h-[70vh] h-[50vh] bg-white">
+      <div className="w-full md:col-span-2 overflow-x-auto">
         {/* Display the table containing the items in the cart */}
         <table className="w-full border-collapse">
           <thead>
@@ -78,37 +76,39 @@ const Cart = () => {
 
   const CheckoutCard = () => {
     return (
-      <div className="w-[80%] h-[50vh] col-span-1  p-4 bg-gray-700 text-white  ">
-        <div className="flex flex-col p-8 space-y-4 ">
-          <h1 className="text-4xl font-bold mb-4">CARD TOTAL</h1>
-          <div className="mb-4">
-            <p>Subtotal: ${totalPrice}</p>
-            <p>Discount: ${totalPrice * 0.1}</p>
-            <p>Total: ${totalPrice - totalPrice * 0.1}</p>
+      <div className="w-full md:w-[80%] lg:h-[auto] h-[auto] col-span-1 p-4 bg-gray-700 text-white">
+        <div className="flex flex-col p-4 md:p-8 space-y-4">
+          <h1 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4">
+            CARD TOTAL
+          </h1>
+          <div className="mb-2 md:mb-4">
+            <p className="text-sm md:text-base">Subtotal: ${totalPrice}</p>
+            <p className="text-sm md:text-base">
+              Discount: ${totalPrice * 0.1}
+            </p>
+            <p className="text-sm md:text-base">
+              Total: ${totalPrice - totalPrice * 0.1}
+            </p>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-2 md:space-y-4">
             <button
-              className={`bg-yellow-500 p-4 w-full rounded-full text-2xl font-bold ${
+              className={`bg-yellow-500 p-2 md:p-4 w-full md:w-[80%] rounded-full text-base md:text-2xl font-bold ${
                 isCheckout ? "hidden" : "block"
               }`}
-              onClick={() =>
-                setIsCheckout((prevChecked) => (prevChecked = !prevChecked))
-              }
+              onClick={() => setIsCheckout((prevChecked) => !prevChecked)}
             >
               CHECKOUT NOW!
             </button>
             <button
-              className={`bg-white text-green-500 p-4 w-full text-xl font-bold tracking-tight ${
+              className={`bg-white text-green-500 p-2 md:p-4 w-full md:w-[80%] text-sm md:text-base font-bold tracking-tight ${
                 isCheckout ? "block" : "hidden"
               } `}
-              onClick={() =>
-                setShowModal((prevModal) => (prevModal = !prevModal))
-              }
+              onClick={() => setShowModal((prevModal) => !prevModal)}
             >
               CASH ON DELIVERY
             </button>
             <button
-              className={`bg-yellow-500 p-4 w-full  text-2xl font-bold tracking-wide ${
+              className={`bg-yellow-500 p-2 md:p-4 w-full md:w-[80%] text-sm md:text-2xl font-bold tracking-wide ${
                 isCheckout ? "block" : "hidden"
               }`}
             >
@@ -137,12 +137,8 @@ const Cart = () => {
       setShowModal(false);
     };
 
-    
-
-
     return (
       <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-sm mt-16">
-        
         <div className="bg-white p-8 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold mb-4">
             You will pay $12 on delivery
@@ -208,8 +204,8 @@ const Cart = () => {
   return (
     <>
       <Navbar />
-      <section className="mt-40">
-        <div className="grid grid-cols-1 md:grid-cols-3  p-4">
+      <section className="mt-40 p-4">
+        <div className="grid grid-cols-1 md:grid-cols-3">
           {/* Table section */}
           <TableSection />
           {/* Cart total card section */}
