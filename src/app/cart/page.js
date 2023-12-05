@@ -3,6 +3,7 @@
 import { useCart } from "@/components/context/CartContext";
 import Footer from "@/components/footer";
 import { useEffect, useState } from "react";
+import { FaTimes } from "react-icons/fa";
 //import { formatCurrency } from "@/utils/formatCurrency"; // Import a utility function to format currency
 
 const { default: Navbar } = require("@/components/navbar");
@@ -139,8 +140,15 @@ const Cart = () => {
 
     return (
       <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-sm mt-16">
-        <div className="bg-white p-8 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold mb-4">
+        <div className="bg-white p-8 rounded-lg shadow-md relative">
+          <button
+            onClick={() => setShowModal(false)}
+            className="absolute top-4 right-4 text-red-500 cursor-pointer bg-white rounded-full p-2 border"
+            style={{ zIndex: 1 }}
+          >
+            <FaTimes size={24} />
+          </button>
+          <h2 className="text-2xl font-bold mb-4 mt-8">
             You will pay $12 on delivery
           </h2>
           <form onSubmit={handleSubmit}>
