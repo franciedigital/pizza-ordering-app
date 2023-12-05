@@ -13,10 +13,26 @@ const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [isCheckout, setIsCheckout] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [name, setName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
+  const [paid, setPaid] = useState(false);
 
   // Function to calculate the total price for each item
   const calculateTotal = (item) => {
     return parseFloat(item.product.price) * item.quantity;
+  };
+
+  const generateOrderId = (length = 32) => {
+    const characters = "abcdefghijklmnopqrstuvwxyz1234567890";
+    let orderId = "";
+
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      orderId += characters.charAt(randomIndex);
+    }
+
+    return orderId;
   };
 
   useEffect(() => {
@@ -28,7 +44,7 @@ const Cart = () => {
     setTotalPrice(newTotalPrice);
   }, [cartItems]);
 
-  const TableSection = () => {
+  const CheckoutTable = () => {
     return (
       <div className="w-full md:col-span-2 overflow-x-auto">
         {/* Display the table containing the items in the cart */}
@@ -75,6 +91,40 @@ const Cart = () => {
     );
   };
 
+  const OrderTable = () => {
+    return (
+      <div className="w-full md:col-span-2 overflow-x-auto">
+        {/* Display the table containing the items in the cart */}
+        <table className="w-full border-collapse">
+          <thead>
+            <tr className="bg-gray-200">
+              <th className="border p-2">Order ID</th>
+              <th className="border p-2">Customer</th>
+              <th className="border p-2">Phone</th>
+              <th className="border p-2">Address</th>
+              <th className="border p-2">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border">
+              {/* Order ID */}
+              <td className="border p-2">{generateOrderId()}</td>
+              {/* Customer Name */}
+              <td className="border p-2">{name}</td>
+              {/* Phone */}
+              <td className="border p-2">{phoneNumber}</td>
+              {/* Address */}
+              <td className="border p-2">{address}</td>
+
+              {/* Total */}
+              <td className="border p-2">${totalPrice}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    );
+  };
+
   const CheckoutCard = () => {
     return (
       <div className="w-full md:w-[80%] lg:h-[auto] h-[auto] col-span-1 p-4 bg-gray-700 text-white">
@@ -94,6 +144,13 @@ const Cart = () => {
           <div className="space-y-2 md:space-y-4">
             <button
               className={`bg-yellow-500 p-2 md:p-4 w-full md:w-[80%] rounded-md text-sm md:text-base  font-bold ${
+              isCheckout && paid ? "block" : "hidden"
+              }`}
+            >
+              PAID
+            </button>
+            <button
+              className={`bg-yellow-500 p-2 md:p-4 w-full md:w-[80%] rounded-md text-sm md:text-base  font-bold ${
                 isCheckout ? "hidden" : "block"
               }`}
               onClick={() => setIsCheckout((prevChecked) => !prevChecked)}
@@ -102,7 +159,7 @@ const Cart = () => {
             </button>
             <button
               className={`bg-white text-green-500 p-2 md:p-4 w-full md:w-[80%] text-sm md:text-base font-bold tracking-tight ${
-                isCheckout ? "block" : "hidden"
+                isCheckout && !paid ? "block" : "hidden"
               } `}
               onClick={() => setShowModal((prevModal) => !prevModal)}
             >
@@ -110,7 +167,7 @@ const Cart = () => {
             </button>
             <button
               className={`bg-yellow-500 p-2 md:p-4 w-full md:w-[80%] text-sm md:text-2xl font-bold tracking-wide ${
-                isCheckout ? "block" : "hidden"
+                isCheckout && !paid ? "block" : "hidden"
               }`}
             >
               <span className="text-blue-800">
@@ -129,12 +186,11 @@ const Cart = () => {
   const CashOnDeliveryModal = () => {
     const handleSubmit = (e) => {
       e.preventDefault();
-      const name = e.target.elements.name.value;
-      const phoneNumber = e.target.elements.phoneNumber.value;
-      const address = e.target.elements.address.value;
-      // Process the data as needed
-      console.log("Form submitted with:", { name, phoneNumber, address });
-      // Close the modal and redirect to order success page
+      setName(e.target.elements.name.value);
+      setPhoneNumber(e.target.elements.phoneNumber.value);
+      setAddress(e.target.elements.address.value);
+
+      setPaid(true);
       setShowModal(false);
     };
 
@@ -163,6 +219,7 @@ const Cart = () => {
                 type="text"
                 id="name"
                 name="name"
+                placeholder="Joe Doe"
                 required
                 className="mt-1 p-2 w-full border rounded-md"
               />
@@ -178,6 +235,7 @@ const Cart = () => {
                 type="tel"
                 id="phoneNumber"
                 name="phoneNumber"
+                placeholder="0803 1234 567"
                 required
                 className="mt-1 p-2 w-full border rounded-md"
               />
@@ -193,6 +251,7 @@ const Cart = () => {
                 id="address"
                 name="address"
                 rows="3"
+                placeholder="10 Isaac John Street"
                 required
                 className="mt-1 p-2 w-full border rounded-md"
               ></textarea>
@@ -215,7 +274,7 @@ const Cart = () => {
       <section className="mt-40 p-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0">
           {/* Table section */}
-          <TableSection />
+          {paid ? <OrderTable /> : <CheckoutTable />}
           {/* Cart total card section */}
           <CheckoutCard />
         </div>
