@@ -19,7 +19,7 @@ const Navbar = () => {
   
 
   return (
-    <nav className="flex justify-between z-[1000] items-center gap-28 md:px-10 py-2 px-3 cursor-pointer w-full ease-in-out transition-all relative">
+    <nav className="flex  bg-white overflow-hidden justify-between z-[1000] items-center gap-28 md:px-10 py-2 px-3 cursor-pointer w-full ease-in-out transition-all relative">
       <Link href="/">
         <Image
           src="https://res.cloudinary.com/ilove2support/image/upload/v1699863114/pizza-logo_afsvzn.png"
