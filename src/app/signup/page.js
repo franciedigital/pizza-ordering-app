@@ -68,7 +68,7 @@ const RegisterForm = ({ handleSubmit, handleInputChange, formData }) => {
   );
 };
 
-const signup = () => {
+const Signup = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -116,4 +116,4 @@ const signup = () => {
     </>
   );
 };
-export default signup;
+export default Signup;
