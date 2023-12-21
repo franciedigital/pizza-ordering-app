@@ -2,6 +2,7 @@
 import { useState } from "react";
 const { default: Navbar } = require("@/components/navbar");
 import Footer from "@/components/footer";
+import { useRouter } from "next/navigation";
 
 const RegisterForm = ({ handleSubmit, handleInputChange, formData }) => {
   return (
@@ -74,6 +75,7 @@ const Signup = () => {
     password: "",
     confirmPassword: "",
   });
+  const router = useRouter();
 
   const handleInputChange = (e) => {
     setFormData((prevFormData) => ({
@@ -82,12 +84,31 @@ const Signup = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       return;
     } else {
       console.log("Submitted: ", { formData });
+
+      // Make a POST request to the API route
+      const response = await fetch("/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      console.log(response)
+
+      if (response.ok) {
+        // Redirect or handle success as needed
+        router.push("/admin"); // Example: Redirect to success page
+      } else {
+        // Handle error
+        console.error("Error submitting form");
+      }
     }
   };
 

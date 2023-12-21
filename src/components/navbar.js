@@ -1,4 +1,3 @@
-
 "use client";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,7 +15,6 @@ const Navbar = () => {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
-  
 
   return (
     <nav className="flex  bg-white overflow-hidden justify-between z-[1000] items-center gap-28 md:px-10 py-2 px-3 cursor-pointer w-full ease-in-out transition-all relative">
@@ -88,9 +86,15 @@ const Navbar = () => {
         </Link>
         <div className="md:hidden flex text-[40px] transform ease-in-out">
           {isMenuOpen ? (
-            <FaTimes onClick={closeMenu} className="text-black cursor-pointer" />
+            <FaTimes
+              onClick={closeMenu}
+              className="text-black cursor-pointer"
+            />
           ) : (
-            <FaBars onClick={toggleMenu} className="text-black cursor-pointer" />
+            <FaBars
+              onClick={toggleMenu}
+              className="text-black cursor-pointer"
+            />
           )}
         </div>
       </div>
@@ -100,7 +104,10 @@ const Navbar = () => {
         <div className="fixed top-0 right-0 h-full bg-white overflow-hidden transition-transform transform w-64">
           {/* Close Icon */}
           <div className="absolute top-4 right-4">
-            <FaTimes className="text-black cursor-pointer" onClick={closeMenu} />
+            <FaTimes
+              className="text-black cursor-pointer"
+              onClick={closeMenu}
+            />
           </div>
 
           {/* Menu Items */}
