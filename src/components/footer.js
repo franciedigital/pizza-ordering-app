@@ -1,4 +1,5 @@
 // Import React at the top of your file if not already done
+import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
@@ -56,10 +57,11 @@ const Footer = () => {
             />
           </div>
           <p>Sigup and get exclusive offers and coupon codes</p>
-          <button className="flex items-center bg-yellow-500 text-white px-4 py-2 rounded-full mt-4 w-max">
-            
-            <span>SIGN UP</span>
-          </button>
+          <Link href="/signup">
+            <button className="flex items-center bg-yellow-500 text-white px-4 py-2 rounded-full mt-4 w-max">
+              <span>SIGN UP</span>
+            </button>
+          </Link>
         </div>
       </div>
     </div>
