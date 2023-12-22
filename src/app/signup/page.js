@@ -75,6 +75,7 @@ const Signup = () => {
     password: "",
     confirmPassword: "",
   });
+  
   const router = useRouter();
 
   const handleInputChange = (e) => {
@@ -89,9 +90,6 @@ const Signup = () => {
     if (formData.password !== formData.confirmPassword) {
       return;
     } else {
-      console.log("Submitted: ", { formData });
-
-      // Make a POST request to the API route
       const response = await fetch("/api/signup", {
         method: "POST",
         headers: {
@@ -100,11 +98,8 @@ const Signup = () => {
         body: JSON.stringify(formData),
       });
 
-      console.log(response)
-
       if (response.ok) {
-        // Redirect or handle success as needed
-        router.push("/admin"); // Example: Redirect to success page
+        router.push("/admin");
       } else {
         // Handle error
         console.error("Error submitting form");

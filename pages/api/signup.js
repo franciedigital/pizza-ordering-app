@@ -4,8 +4,8 @@ export default async function handler(req, res) {
   const db = await connectToDatabase();
   if (req.method === "POST") {
     try {
-      // Handle the form data, e.g., store it in a database
-      const formData = req.body;
+      let formData = req.body;
+      formData.isAdmin = false;
       // Check if the user with the email already exists
       const existingUser = await db
         .collection("users")
