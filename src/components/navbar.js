@@ -48,12 +48,7 @@ const Navbar = () => {
           >
             Products
           </Link>
-          <Link
-            href="/pages"
-            className="text-[17px] font-bold hover:text-red-600"
-          >
-            Pages
-          </Link>
+
           <Link
             href="/blog"
             className="text-[17px] font-bold hover:text-red-600"
@@ -65,6 +60,12 @@ const Navbar = () => {
             className="text-[17px] font-bold hover:text-red-600"
           >
             Contact
+          </Link>
+          <Link
+            href="/signin"
+            className="text-[17px] font-bold hover:text-red-600"
+          >
+            Signin
           </Link>
         </div>
         <svg
