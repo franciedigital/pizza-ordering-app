@@ -1,0 +1,19 @@
+{
+    "routes": [
+      {
+        "src": "/api/*",
+        "methods": ["GET", "POST"],
+        "dest": "/api/*",
+        "headers": {
+          "x-vercel-cache": "always"
+        },
+        "config": {
+          "api": {
+            "bodyLimit": "500kb",
+            "timeout": 300
+          }
+        }
+      }
+    ]
+  }
+  
