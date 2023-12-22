@@ -4,6 +4,7 @@ const { default: Navbar } = require("@/components/navbar");
 import Footer from "@/components/footer";
 import { useRouter } from "next/navigation";
 
+
 const RegisterForm = ({ handleSubmit, handleInputChange, formData }) => {
   return (
     <form onSubmit={handleSubmit}>
@@ -75,7 +76,7 @@ const Signup = () => {
     password: "",
     confirmPassword: "",
   });
-  
+
   const router = useRouter();
 
   const handleInputChange = (e) => {
@@ -132,4 +133,5 @@ const Signup = () => {
     </>
   );
 };
+
 export default Signup;
